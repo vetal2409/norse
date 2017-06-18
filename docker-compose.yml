@@ -9,7 +9,7 @@ services:
         volumes:
             - "./docker/shared/.data/mongodb:/data/db"
 
-    web:
+    app:
         build:
             context: .
         container_name: norse_app

@@ -1,6 +1,11 @@
 # Norse Digital test task
 
+##Requirements
 
+- docker
+- docker-compose version **1.13.0+** (for comfortable running containers)
+
+##Installation
 **How to run this project using docker:**
 - Clone repository
 - Go into the project folder
@@ -11,7 +16,24 @@
 _P.S. Default ports for prod are: 8082 (nginx) and 5002 (mongodb). You can change them if thay are busy in your system_
 
 
+##Using
+**Default user:**
+
+- email: **todo**
+- password: **todo**
+
+
+##Development
+
+**Docker info:**
+
+- Build images: `docker-compose build`
+- Run containers: `docker-compose up -d`
+- Go inside container: `docker exec -ti norse_app bash`
+- Add permission for the runtime folder (only first time): `mkdir -p web/runtime && chown -R 33:33 web/runtime`
+- Enable/disable xdebug (inside app container): `xdebug`
 
 **Logs**
 
 You can found logs in the "shared/logs" folder (web-server, cron, etc.)
+
