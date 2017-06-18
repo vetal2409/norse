@@ -1,11 +1,11 @@
 # Norse Digital test task
 
-##Requirements
+## Requirements
 
 - docker
 - docker-compose version **1.13.0+** (for comfortable running containers)
 
-##Installation
+## Installation
 **How to run this project using docker:**
 - Clone repository
 - Go into the project folder
@@ -16,14 +16,14 @@
 _P.S. Default ports for prod are: 8082 (nginx) and 5002 (mongodb). You can change them if thay are busy in your system_
 
 
-##Using
+## Using
 **Default user:**
 
 - email: **admin@gmail.com**
 - password: **111**
 
 
-##Development
+## Development
 
 **Docker info:**
 
