@@ -19,6 +19,7 @@ server {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param HTTPS off;
+        fastcgi_param MONGODB_HOST "mongodb";
 
         # Prevents URIs that include the front controller. This will 404:
         # http://domain.tld/index.php/some-path
