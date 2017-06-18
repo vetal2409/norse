@@ -1,0 +1,33 @@
+{
+    "autoload": {
+        "psr-4": {
+            "e1\\": "e1",
+            "console\\": "console"
+        }
+    },
+    "require": {
+        "silex/silex": "^2.0",
+        "symfony/asset": "^3.2",
+        "symfony/console": "^3.2",
+        "symfony/twig-bridge": "^3.2",
+        "zircote/swagger-php": "^2.0",
+        "twig/twig": "^2.1",
+        "predis/predis": "^1.1",
+        "monolog/monolog": "^1.21",
+        "willdurand/negotiation": "^2.2",
+        "mongodb/mongodb": "^1.1",
+        "jenssegers/mongodb": "^3.2",
+        "illuminate/view": "5.4.*",
+        "illuminate/database": "5.4.*",
+        "illuminate/pagination": "5.4.*",
+        "Illuminate/validation": "5.4.*",
+        "illuminate/container": "5.4.*",
+        "illuminate/contracts": "5.4.*",
+        "illuminate/support": "5.4.*",
+        "illuminate/translation": "5.4.*",
+        "simplepie/simplepie": "^1.5"
+    },
+    "require-dev": {
+        "sorien/silex-pimple-dumper": "~2.0"
+    }
+}

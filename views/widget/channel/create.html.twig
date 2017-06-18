@@ -1,0 +1,10 @@
+{% extends layout %}
+    {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
+    {% set breadcrumbs = {'name': breadcrumbsModelName|trans, 'min': 'crud.base.create'|trans } %}
+{% block content %}
+
+    <form action="{{ url( modelName ~'.create') }}" enctype="multipart/form-data" method="post">
+    {% include 'widget/'~modelName~'/_form.html.twig' with {'data': data} %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<input type="hidden" name="_id" value="{{ data.model._id|default('') }}">
+
+<div class="form-group">
+    <label for="title">{{ 'model.feed.title'|trans }}</label>
+    <input type="text" name="title" id="title" value="{{ data.model.title|default('') }}" class="form-control" required>
+    {% if data.model.errors.title is defined %} {% for value  in data.model.errors.title %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="link">{{ 'model.feed.link'|trans }}</label>
+    <input type="text" name="link" id="link" value="{{ data.model.link|default('') }}" class="form-control" required>
+    {% if data.model.errors.link is defined %} {% for value  in data.model.errors.link %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">{{ 'model.feed.content'|trans }}
+            <small></small>
+        </h3>
+        <!-- tools box -->
+        <div class="pull-right box-tools">
+            <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+        </div>
+        <!-- /. tools -->
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body pad">
+        <textarea id="content" name="content" rows="10" cols="80" placeholder="..."
+                  title="">{{ data.model.content|default('') }}</textarea>
+    </div>
+    {% if data.model.errors.content is defined %} {% for value  in data.model.errors.content %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+
+<button class="btn btn-primary" type="submit">  {% if data.model._id is defined %} {{ 'crud.base.update'|trans }} {% else %} {{ 'crud.base.save'|trans }}  {% endif %}</button>
+
+<script>
+    $(function () {
+        CKEDITOR.replace('content');
+    });
+</script>

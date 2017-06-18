@@ -1,0 +1,187 @@
+<input type="hidden" name="_id" value="{{ data.model._id|default('') }}">
+
+<div class="form-group">
+    <label for="last_name">{{'model.user.last_name'|trans }}</label>
+    <input type="text" name="last_name" value="{{ data.model.last_name|default('') }}" id="last_name" class="form-control" required>
+    {% if data.model.errors.last_name is defined %} {% for value  in data.model.errors.last_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="first_name">{{ 'model.user.first_name'|trans }}</label>
+    <input type="text" name="first_name" value="{{ data.model.first_name|default('') }}" id="first_name" class="form-control" required>
+    {% if data.model.errors.first_name is defined %} {% for value  in data.model.errors.first_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="middle_name">{{ 'model.user.middle_name'|trans }}</label>
+    <input type="text" name="middle_name" id="middle_name" value="{{ data.model.middle_name|default('') }}" class="form-control" required>
+    {% if data.model.errors.middle_name is defined %} {% for value  in data.model.errors.middle_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="phone">{{ 'model.user.phone'|trans }}</label>
+    <input type="text" name="phone" id="phone" value="{{ data.model.phone|default('') }}" class="form-control" required>
+    {% if data.model.errors.phone is defined %} {% for value  in data.model.errors.phone %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="birthday">{{ 'model.user.birthday'|trans }}</label>
+    <input type="text"  name="birthday" id="birthday" value="{{ data.model.birthday|date("d-m-Y")|default('') }}" class="form-control" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask="" required>
+    {% if data.model.errors.birthday is defined %} {% for value  in data.model.errors.birthday %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="password">{{ 'model.user.password'|trans }}</label>
+    <input type="password" name="password" id="password" value="{{ data.model.password|default('') }}" class="form-control">
+    {% if data.model.errors.password is defined %} {% for value  in data.model.errors.password %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="email">{{ 'model.user.email'|trans }}</label>
+    <input type="text" name="email" id="email" value="{{ data.model.email|default('') }}" class="form-control">
+    {% if data.model.errors.email is defined %} {% for value  in data.model.errors.email %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="country">{{ 'model.user.country'|trans }}</label>
+    <input type="text" name="country" id="country" value="{{ data.model.country|default('') }}" class="form-control">
+    {% if data.model.errors.country is defined %} {% for value  in data.model.errors.country %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="region">{{ 'model.user.region'|trans }}</label>
+    <input type="text" name="region" id="region" value="{{ data.model.region|default('') }}" class="form-control">
+    {% if data.model.errors.region is defined %} {% for value  in data.model.errors.region %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="city">{{ 'model.user.city'|trans }}</label>
+    <input type="text" name="country" id="city" value="{{ data.model.city|default('') }}" class="form-control">
+    {% if data.model.errors.city is defined %} {% for value  in data.model.errors.city %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="area">{{ 'model.user.area'|trans }}</label>
+    <input type="text" name="area" id="area" value="{{ data.model.area|default('') }}" class="form-control">
+    {% if data.model.errors.area is defined %} {% for value  in data.model.errors.area %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="street">{{ 'model.user.street'|trans }}</label>
+    <input type="text" name="street" id="street" value="{{ data.model.street|default('') }}" class="form-control">
+    {% if data.model.errors.street is defined %} {% for value  in data.model.errors.street %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="house">{{ 'model.user.house'|trans }}</label>
+    <input type="text" name="house" id="house" value="{{ data.model.house|default('') }}" class="form-control">
+    {% if data.model.errors.house is defined %} {% for value  in data.model.errors.house %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="apartment">{{ 'model.user.apartment'|trans }}</label>
+    <input type="text" name="apartment" id="apartment" value="{{ data.model.apartment|default('') }}" class="form-control">
+    {% if data.model.errors.apartment is defined %} {% for value  in data.model.errors.apartment %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+{#<div class="form-group">#}
+    {#<label for="specializations">{{ 'model.user.specializations'|trans }}</label>#}
+    {#<input type="text" name="specializations" id="specializations" value="{{ data.model.specializations|default('') }}" class="form-control">#}
+    {#{% if data.model.errors.specializations is defined %} {% for value  in data.model.errors.specializations %}#}
+        {#{{ value }} <br>#}
+    {#{% endfor %} {% endif %}#}
+{#</div>#}
+
+<div class="form-group">
+    <label for="description">{{ 'model.user.description'|trans }}</label>
+    <input type="text" name="description" id="description" value="{{ data.model.description|default('') }}" class="form-control">
+    {% if data.model.errors.description is defined %} {% for value  in data.model.errors.description %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="status">{{ 'model.user.status'|trans }}</label>
+    <select id="status" name="status" class="form-control">
+        {% for item in [
+            constant('e1\\Models\\user::STATUS_CREATED'),
+            constant('e1\\Models\\user::STATUS_ACTIVE'),
+            constant('e1\\Models\\user::STATUS_BLOCKED'),
+            constant('e1\\Models\\user::STATUS_DIED'),
+        ] %}
+            <option {% if item == data.model.status|default('') %} selected {% endif %} >{{ item }}</option>
+        {% endfor %}
+    </select>
+    {% if data.model.errors.status is defined %} {% for value  in data.model.errors.status %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="admin">{{ 'model.user.admin'|trans }}</label>
+
+    <select id="admin" name="admin" class="form-control">
+        {% for item in [0, 1] %}
+            <option {% if item == data.model.admin|default('') %} selected {% endif %} >{{ item }}</option>
+        {% endfor %}
+    </select>
+    {% if data.model.errors.admin is defined %} {% for value  in data.model.errors.admin %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+
+{% if data.model.attachment is not empty %}
+    <img src="{{ data.model.attachment.url|default('') }}" width="400" alt="logo">
+{% endif %}
+
+<div class="form-group">
+    <label for="file">{{ 'model.attachment.file'|trans }}</label>
+    <input type="file" name="file" id="file">
+    {% if data.model.errors.description is defined %} {% for value  in data.model.errors.description %}
+        <p class="help-block">{{ value }}</p>
+    {% endfor %} {% endif %}
+</div>
+
+<button class="btn btn-primary"
+        type="submit">  {% if data.model._id is defined %} {{ 'crud.base.update'|trans }} {% else %} {{ 'crud.base.save'|trans }}  {% endif %}</button>
+
+<script>
+    $(function () {
+
+        $("#birthday").inputmask("dd-mm-yyyy", {"placeholder": "dd-mm-yyyy"});
+
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: 'dd.mm.yyyy'
+        });
+    });
+</script>

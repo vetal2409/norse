@@ -1,0 +1,58 @@
+{% extends layout %}
+  {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
+  {% set breadcrumbs = {'name': breadcrumbsModelName|trans , 'min': 'crud.base.view'|trans } %}
+{% block content %}
+
+    {#{% for key, value  in app.session.flashbag.all() %}#}
+        {#<div class="alert alert-{{ key }} alert-dismissible">#}
+            {#<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
+            {#<h4><i class="icon fa fa-ban"></i> Alert!</h4>#}
+            {#{{ value.0 }}#}
+        {#</div>#}
+    {#{% endfor %}#}
+
+
+    <form method="post" action="{{ url(modelName ~ ".update", {'id': data.model._id}) }}">
+        <input type="hidden" id="_method" name="_method" value="PUT"/>
+        <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.update'|trans }}</button>
+    </form>
+
+    <form method="post" action="{{ url(modelName ~ ".delete", {'id': data.model._id}) }}">
+        <input type="hidden" id="_method" name="_method" value="DELETE"/>
+        <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.delete'|trans }}</button>
+    </form>
+
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title"></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <table class="table table-condensed">
+                    <tbody>
+                    <tr>
+                        <th style="width: 150px">{{ 'crud.base.key'|trans }}</th>
+                        <th>{{ 'crud.base.value'|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ 'model.channel.name'|trans }}</td>
+                        <td>{{ data.model.name|default('') }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'model.channel.type'|trans }}</td>
+                        <td>{{ data.model.type|default('') }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'model.channel.url'|trans }}</td>
+                        <td>{{ data.model.url|default('') }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+{% endblock %}

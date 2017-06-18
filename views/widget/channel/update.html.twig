@@ -1,0 +1,9 @@
+{% extends layout %}
+  {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
+  {% set breadcrumbs = {'name': breadcrumbsModelName|trans, 'min': 'crud.base.update'|trans } %}
+{% block content %}
+    <form action="{{ url(modelName ~ ".update", {'id': data.model._id}) }}" enctype="multipart/form-data" method="post">
+        <input type="hidden" id="_method" name="_method" value="PUT"/>
+        {% include 'widget/'~modelName~'/_form.html.twig' with {'data': data} %}
+    </form>
+{% endblock %}

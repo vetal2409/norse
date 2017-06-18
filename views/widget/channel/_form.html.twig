@@ -1,0 +1,42 @@
+<input type="hidden" name="_id" value="{{ data.model._id|default('') }}">
+
+<div class="form-group">
+    <label for="name">{{ 'model.channel.name'|trans }}</label>
+    <input  type="text" name="name"  id="name" value="{{ data.model.name|default('') }}" class="form-control" required>
+    {% if data.model.errors.last_name is defined %} {% for value  in data.model.errors.last_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+
+<div class="form-group">
+    <label for="url">{{ 'model.channel.type'|trans }}</label>
+        {% for key, value  in {
+            'Rss': constant('e1\\Models\\channel::TYPE_RSS'),
+            'Twitter': constant('e1\\Models\\channel::TYPE_TWITTER')
+        } %}
+            <div class="radio">
+                <label>
+                    <input type="radio" name="type" id="optionsRadios{{ value }}" value="{{ value }}"
+                            {% if value == data.model.type|default('') %} checked {% endif %}
+                           >
+                    {{ key }}
+                </label>
+            </div>
+        {% endfor %}
+
+    {% if data.model.errors.type is defined %} {% for value  in data.model.errors.type %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="url">{{ 'model.channel.url'|trans }}</label>
+    <input  type="text" name="url"  id="url" value="{{ data.model.url|default('') }}" class="form-control" required>
+    {% if data.model.errors.url is defined %} {% for value  in data.model.errors.url %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<button class="btn btn-primary" type="submit">  {% if data.model._id is defined %} {{ 'crud.base.update'|trans }} {% else %} {{ 'crud.base.save'|trans }}  {% endif %}</button>
+

@@ -1,0 +1,6 @@
+.idea/
+/vendor/
+web/static/
+web/runtime/
+composer.lock
+pimple.json

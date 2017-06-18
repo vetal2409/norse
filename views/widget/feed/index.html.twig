@@ -1,0 +1,132 @@
+{% extends layout %}
+    {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
+    {% set breadcrumbs = {'name': breadcrumbsModelName|trans, 'min': 'crud.base.list'|trans } %}
+{% block content %}
+
+    {% set limit = global.request.query.get('limit', 10) %}
+
+    <div class="btn-block">
+        <form method="post" action="{{ url(modelName ~ ".create") }}">
+            <button class="btn btn-block btn-primary"
+                    type="submit">{{ 'crud.base.create'|trans }} {{ modelName }}</button>
+        </form>
+    </div>
+    <br>
+
+    <div class="box">
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                               aria-describedby="example1_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 181px;">#
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending"
+                                    style="width: 154px;">{{ 'model.feed.title'|trans }}
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending"
+                                    style="width: 154px;">{{ 'model.feed.type'|trans }}
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
+                                    {{ 'crud.base.view'|trans }}
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
+                                    {{ 'crud.base.update'|trans }}
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
+                                    {{ 'crud.base.delete'|trans }}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for item in data.pager.data %}
+                                <tr role="row" class="odd">
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item.title|default('') }}</td>
+                                    <td>{{ item.type|default('') }}</td>
+                                    <td>
+                                        <a href="{{ url(modelName ~ ".view", {'id': item._id}) }}"
+                                           class="btn btn-block btn-success">{{ 'crud.base.view'|trans }}</a>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{{ url(modelName ~ ".update", {'id': item._id}) }}">
+                                            <input type="hidden" id="_method" name="_method" value="PUT"/>
+                                            <button class="btn btn-block btn-danger"
+                                                    type="submit">{{ 'crud.base.update'|trans }}</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{{ url(modelName ~ ".delete", {'id': item._id}) }}">
+                                            <input type="hidden" id="_method" name="_method" value="DELETE"/>
+                                            <button class="btn btn-block btn-danger"
+                                                    type="submit">{{ 'crud.base.delete'|trans }}</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr role="row" class="odd">
+                                {% if not data.pager.total %}
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{ 'crud.base.record_not_found'|trans }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <ul class="pagination">
+
+                                <li class="paginate_button previous {% if data.pager.prev_page_url is null %} disabled {% endif %}">
+                                    <a class="{% if data.pager.prev_page_url is null %}  disabled {% endif %} btn-primary"
+                                       href="{{ data.pager.prev_page_url }}">{{ 'crud.base.previous'|trans }}</a>
+                                </li>
+
+                                <li class="paginate_button btn-group">
+                                    <button type="button"
+                                            class="btn btn-primary btn-flat">{{ data.pager.current_page }}</button>
+                                    <button type="button" class="btn btn-primary btn-flat dropdown-toggle"
+                                            data-toggle="dropdown"><span class="caret"></span><span class="sr-only"> Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% for i in 1..data.pager.last_page %}
+                                            <li class="{% if data.pager.current_page == i %} {{ 'active' }}  {% endif %}">
+                                                <a onclick="changeUrl({current_page: {{ i }}})" href="#">{{ i }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="paginate_button next">
+                                    <a class="{% if data.pager.next_page_url is null %}  disabled {% endif %} btn-primary"
+                                       href="{{ data.pager.next_page_url }}">{{ 'crud.base.next'|trans }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/list.js', 'asset') }}" type="text/javascript"></script>
+
+{% endblock %}
