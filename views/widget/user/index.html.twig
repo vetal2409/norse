@@ -6,9 +6,9 @@
     {% set limit = global.request.query.get('limit', 10) %}
 
     <div class="btn-block">
-        <form method="post" action="{{ url(modelName ~ ".site.create") }}">
+        <form method="post" action="{{ url(modelName ~ ".create") }}">
             <button class="btn btn-block btn-primary"
-                    type="submit">{{ 'crud.base.create'|trans }} {{ modelName }}</button>
+                    type="submit">{{ 'crud.base.create'|trans }} {{ 'model.user.creating'|trans  }}</button>
         </form>
     </div>
     <br>
@@ -16,41 +16,41 @@
     <div class="box">
         <div class="box-body">
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                {#<div class="row">#}
-                    {#<div class="col-sm-6">#}
-                        {#<div class="dataTables_length" id="example1_length">#}
-                            {#<label>{{ 'crud.base.show'|trans }}#}
-                                {#<select name="example1_length" aria-controls="example1"#}
-                                        {#onchange="changeUrl({'limit': event.target.value}, true)"#}
-                                        {#class="form-control input-sm">#}
-                                    {#{% for item in [10, 20, 50, 100] %}#}
-                                        {#<option {% if item == limit %} selected {% endif %} >{{ item }}</option>#}
-                                    {#{% endfor %}#}
-                                {#</select>#}
-                                {#{{ 'crud.base.entries'|trans }}#}
-                            {#</label>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="col-sm-6">#}
-                        {#<div id="example1_filter" class="dataTables_filter">#}
-                            {#<div class="row">#}
-                                {#<div class="col-xs-9">#}
-                                    {#<input placeholder="{{ 'crud.base.search-placeholder'|trans }}" type="search"#}
-                                           {#id="search-input"#}
-                                           {#style="width: 100%;"#}
-                                           {#value="{% if global.request.query.search is defined %} {{ global.request.query.search }}  {% endif %}"#}
-                                           {#class="form-control input-sm" name="search">#}
-                                {#</div>#}
-                                {#<div class="col-xs-3">#}
-                                    {#<button onclick="search({{ limit }})" id="search-bottom"#}
-                                            {#class="btn btn-block btn-danger"#}
-                                            {#type="submit">{{ 'crud.base.search'|trans }}#}
-                                    {#</button>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example1_length">
+                            <label>{{ 'crud.base.show'|trans }}
+                                <select name="example1_length" aria-controls="example1"
+                                        onchange="changeUrl({'limit': event.target.value}, true)"
+                                        class="form-control input-sm">
+                                    {% for item in [10, 20, 50, 100] %}
+                                        <option {% if item == limit %} selected {% endif %} >{{ item }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ 'crud.base.entries'|trans }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <input placeholder="{{ 'crud.base.search-placeholder'|trans }}" type="search"
+                                           id="search-input"
+                                           style="width: 100%;"
+                                           value="{% if global.request.query.search is defined %} {{ global.request.query.search }}  {% endif %}"
+                                           class="form-control input-sm" name="search">
+                                </div>
+                                <div class="col-xs-3">
+                                    <button onclick="search({{ limit }})" id="search-bottom"
+                                            class="btn btn-block btn-danger"
+                                            type="submit">{{ 'crud.base.search'|trans }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
@@ -64,31 +64,20 @@
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Engine version: activate to sort column ascending"
-                                    style="width: 154px;">{{ "model.user.last_name"|trans }}
+                                    style="width: 154px;">{{ 'model.user.username'|trans }}
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Engine version: activate to sort column ascending"
-                                    style="width: 154px;">{{ 'model.user.first_name'|trans }}
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Engine version: activate to sort column ascending"
-                                    style="width: 154px;">{{ 'model.user.middle_name'|trans }}
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Engine version: activate to sort column ascending"
-                                    style="width: 154px;">{{ 'model.user.phone'|trans }}
+                                    style="width: 154px;">{{ 'model.user.email'|trans }}
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
-                                    {{ 'crud.base.view'|trans }}
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
-                                    {{ 'crud.base.update'|trans }}
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">
-                                    {{ 'crud.base.delete'|trans }}
                                 </th>
                             </tr>
                             </thead>
@@ -97,27 +86,24 @@
                             {% for item in data.pager.data %}
                                 <tr role="row" class="odd">
                                     <td>{{ loop.index }}</td>
-                                    <td>{{ item.last_name|default('') }}</td>
-                                    <td>{{ item.first_name|default('') }}</td>
-                                    <td>{{ item.middle_name|default('') }}</td>
-                                    <td>{{ item.phone|default('') }}</td>
+                                    <td>{{ item.first_name }}</td>
+                                    <td>{{ item.middle_name }}</td>
+                                    <td>{{ item.last_name }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td>{{ item.role }}</td>
                                     <td>
-                                        <a href="{{ url(modelName ~ ".site.view", {'id': item._id}) }}"
+                                        <a href="{{ url(modelName ~ ".view", {'id': item._id}) }}"
                                            class="btn btn-block btn-success">{{ 'crud.base.view'|trans }}</a>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{ url(modelName ~ ".site.update", {'id': item._id}) }}">
+                                        <form method="post" action="{{ url(modelName ~ ".update", {'id': item._id}) }}">
                                             <input type="hidden" id="_method" name="_method" value="PUT"/>
                                             <button class="btn btn-block btn-danger"
                                                     type="submit">{{ 'crud.base.update'|trans }}</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{ url(modelName ~ ".site.delete", {'id': item._id}) }}">
-                                            <input type="hidden" id="_method" name="_method" value="DELETE"/>
-                                            <button class="btn btn-block btn-danger"
-                                                    type="submit">{{ 'crud.base.delete'|trans }}</button>
-                                        </form>
+                                        <button data-url="{{ url(modelName ~ ".delete", {'id': item._id}) }}" class="btn btn-block btn-danger remove" type="submit">{{ 'crud.base.delete'|trans }}</button>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -154,7 +140,7 @@
                                     <ul class="dropdown-menu" role="menu">
                                         {% for i in 1..data.pager.last_page %}
                                             <li class="{% if data.pager.current_page == i %} {{ 'active' }}  {% endif %}">
-                                                <a onclick="changeUrl({current_page: {{ i }}})" href="#">{{ i }}</a>
+                                                <a onclick="changeUrl({page: {{ i }}})" href="#">{{ i }}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -170,6 +156,10 @@
             </div>
         </div>
     </div>
+
+    <!-- modal -->
+    {% include 'general/_modal.html.twig' with {'url': data} %}
+    <!-- ./ modal -->
 
     <script src="{{ asset('js/list.js', 'asset') }}" type="text/javascript"></script>
 

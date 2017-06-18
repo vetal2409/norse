@@ -2,8 +2,48 @@
   {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
   {% set breadcrumbs = {'name': breadcrumbsModelName|trans, 'min': 'crud.base.update'|trans } %}
 {% block content %}
-    <form action="{{ url(modelName ~ ".site.update", {'id': data.model._id}) }}" enctype="multipart/form-data" method="post">
-        <input type="hidden" id="_method" name="_method" value="PUT"/>
-        {% include 'widget/'~modelName~'/_form.html.twig' with {'data': data} %}
-    </form>
+    <div class="row">
+    <div class="col-md-3">
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <img class="profile-user-img img-responsive img-circle"
+                     src="{{ asset('admin-lte/dist/img/user2-160x160.jpg', 'asset.bower') }}"
+                     alt="User profile picture">
+                <h3 class="profile-username text-center">{{ user.first_name|default('') }} {{ user.middle_name|default('') }} {{ user.last_name|default('') }}</h3>
+                <ul class="list-group list-group-unbordered">
+                    {#<li class="list-group-item">ID <a class="pull-right">{{ data.model._id|default('-') }}</a></li>#}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="{% if data.model._scenario == 'update' %} {{ 'active' }} {% else %} {{ '' }} {% endif %}">
+                    <a href="#update" data-toggle="tab" aria-expanded="true">Информация профиля</a>
+                </li>
+                <li class="{% if data.model._scenario == 'password_change' %} {{ 'active' }} {% else %} {{ '' }} {% endif %}">
+                    <a href="#password_change" data-toggle="tab" aria-expanded="false">Изменить пароль</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane {% if data.model._scenario == 'update' %} {{ 'active' }} {% else %} {{ '' }} {% endif %}" id="update">
+                    <form action="{{ url(modelName ~ ".update", {'id': data.model._id}) }}" method="post">
+                    <input type="hidden" id="_method" name="_method" value="PUT"/>
+                    {% include 'widget/'~modelName~'/_form.html.twig' with {'data': data} %}
+                    </form>
+                </div>
+
+                <div class="tab-pane {% if data.model._scenario == 'password_change' %} {{ 'active' }} {% else %} {{ '' }} {% endif %}" id="password_change">
+                    <form action="{{ url(modelName ~ ".update", {'id': data.model._id}) }}" method="post">
+                        <input type="hidden" id="_method" name="_method" value="PUT"/>
+                        {% include 'widget/'~modelName~'/_change-password.html.twig' with {'data': data} %}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,27 +3,27 @@
   {% set breadcrumbs = {'name': breadcrumbsModelName|trans , 'min': 'crud.base.view'|trans } %}
 {% block content %}
 
-    {#{% for key, value  in app.session.flashbag.all() %}#}
-        {#<div class="alert alert-{{ key }} alert-dismissible">#}
-            {#<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
-            {#<h4><i class="icon fa fa-ban"></i> Alert!</h4>#}
-            {#{{ value.0 }}#}
-        {#</div>#}
-    {#{% endfor %}#}
+    {% for key, value  in app.session.flashbag.all() %}
+        <div class="alert alert-{{ key }} alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+            {{ value.0 }}
+        </div>
+    {% endfor %}
 
 
-    <form method="post" action="{{ url(modelName ~ ".site.update", {'id': data.model._id}) }}">
+    <form method="post" action="{{ url(modelName ~ ".update", {'id': data.model._id}) }}">
         <input type="hidden" id="_method" name="_method" value="PUT"/>
         <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.update'|trans }}</button>
     </form>
 
-    <form method="post" action="{{ url(modelName ~ ".site.delete", {'id': data.model._id}) }}">
-        <input type="hidden" id="_method" name="_method" value="DELETE"/>
-        <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.delete'|trans }}</button>
-    </form>
+    <td>
+        <button data-url="{{ url(modelName ~ ".delete", {'id': data.model._id}) }}" class="btn btn-block btn-danger remove" type="submit">{{ 'crud.base.delete'|trans }}</button>
+    </td>
 
     <div class="col-md-1"></div>
     <div class="col-md-10">
+
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title"></h3>
@@ -33,24 +33,28 @@
                 <table class="table table-condensed">
                     <tbody>
                     <tr>
-                        <th style="width: 150px">Key</th>
+                        <th style="width: 10px">Key</th>
                         <th>Value</th>
                     </tr>
                     <tr>
-                        <td>{{ 'model.user.last_name'|trans }}</td>
-                        <td>{{ data.model.last_name|default('') }}</td>
+                        <td>{{ 'model.user.username'|trans }}</td>
+                        <td>{{ data.model.first_name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'model.user.first_name'|trans }}</td>
-                        <td>{{ data.model.first_name|default('') }}</td>
+                        <td>{{ 'model.user.username'|trans }}</td>
+                        <td>{{ data.model.middle_name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'model.user.middle_name'|trans }}</td>
-                        <td>{{ data.model.middle_name|default('') }}</td>
+                        <td>{{ 'model.user.username'|trans }}</td>
+                        <td>{{ data.model.last_name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'model.user.phone'|trans }}</td>
-                        <td>{{ data.model.phone|default('') }}</td>
+                        <td>{{ 'model.user.email'|trans }}</td>
+                        <td>{{ data.model.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'model.user.email'|trans }}</td>
+                        <td>{{ data.model.role }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -58,5 +62,9 @@
             <!-- /.box-body -->
         </div>
     </div>
+
+    <!-- modal -->
+    {% include 'general/_modal.html.twig' with {'url': data} %}
+    <!-- ./ modal -->
 
 {% endblock %}

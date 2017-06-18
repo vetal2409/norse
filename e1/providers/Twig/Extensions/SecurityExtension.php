@@ -25,7 +25,7 @@ class SecurityExtension extends \Twig_Extension
 
     public function isGranted(array $roles)
     {
-        if (isset($this->app[$this->securityChecker])) {
+        if (!isset($this->app[$this->securityChecker])) {
             return false;
         }
         return $this->app[$this->securityChecker]->isGranted($roles, $this->app['request_stack']->getCurrentRequest());
