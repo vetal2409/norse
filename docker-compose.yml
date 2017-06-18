@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    mongodb:
+        image: mongo:3.0.15
+        container_name: norse_mongodb
+        ports:
+            - "5001:27017"
+        volumes:
+            - "./docker/shared/.data/mongodb:/data/db"
+
+    web:
+        build:
+            context: .
+        container_name: norse_app
+        ports:
+            - "8081:80"
+        volumes:
+            - "./:/var/www/norse"
+            - "./docker/nginx/dev/sites:/etc/nginx/sites"
+            - "./docker/shared/logs/nginx:/var/log/nginx"
+            - "./docker/shared/logs/cron:/var/log/cron"
+        environment:
+            MONGODB_HOST: mongodb
+        depends_on:
+          - mongodb
+        extra_hosts:
+         - "localhost:172.17.0.1"

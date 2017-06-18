@@ -67,7 +67,7 @@ $app['twig.options'] = ['cache' => $app['base.dir'] . '/runtime/cache/twig'];
 # DB Eloquent
 $app['db.config'] = [
     'driver' => 'mongodb',
-    'host' => '127.0.0.1',
+    'host' => getenv('MONGODB_HOST') ?: '127.0.0.1',
     'port' => '27017',
     'database' => DB_MONGODB,
     'charset' => 'utf8',
