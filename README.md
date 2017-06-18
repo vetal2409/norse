@@ -31,6 +31,7 @@ _P.S. Default ports for prod are: 8082 (nginx) and 5002 (mongodb). You can chang
 - Run containers: `docker-compose up -d`
 - Go inside container: `docker exec -ti norse_app bash`
 - Add permission for the runtime folder (only first time): `mkdir -p web/runtime && chown -R 33:33 web/runtime`
+- Load default fixtures (only first time): `mongorestore -d norse dump/norse/`
 - Enable/disable xdebug (inside app container): `xdebug`
 
 **Logs**
