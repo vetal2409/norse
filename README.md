@@ -19,8 +19,8 @@ _P.S. Default ports for prod are: 8082 (nginx) and 5002 (mongodb). You can chang
 ##Using
 **Default user:**
 
-- email: **todo**
-- password: **todo**
+- email: **admin@gmail.com**
+- password: **111**
 
 
 ##Development
