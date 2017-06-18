@@ -75,10 +75,6 @@ class user extends Model implements IdentityInterface
         'role' => self::ROLE_USER,
     ];
 
-    protected $appends = [
-        'attachment',
-    ];
-
     protected $scenarioRules = [
 
         self::SCENARIO_CREATE => [

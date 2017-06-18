@@ -107,7 +107,7 @@ class activeCRUD implements Silex\Api\ControllerProviderInterface
             }
         }
 
-        if (isset($this->additions['relation.list'])) {
+        if ($this->additions['relation.list']) {
             $model->with($this->additions['relation.list']);
         }
 
@@ -120,9 +120,13 @@ class activeCRUD implements Silex\Api\ControllerProviderInterface
         }
 
         # add append to models
-        foreach ($pager->items() as $item) {
-            /** @var Model|Builder $item # add appends */
-            $item->append($this->additions['append.list'] ?? []);
+
+        if ($this->additions['append.list']) {
+
+            foreach ($pager->items() as $item) {
+                /** @var Model|Builder $item # add appends */
+                $item->append($this->additions['append.list']);
+            }
         }
 
         return $this->render('index', [

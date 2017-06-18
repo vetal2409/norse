@@ -55,7 +55,7 @@ trait controllerCore
             $controllers->secure($this->secure['roles'], $this->secure['redirect_url'], $this->security_checker);
         }
 
-        $controllers->before(function (Request $request, Application $app) use ($app, $controllers) {
+        $controllers->before(function (Request $request) use ($app, $controllers) {
 
             $controllers->assert('_locale', $app['translator.locales']);
             $app['security.authorization_checker'] = $app[$this->security_checker];

@@ -24,13 +24,12 @@ use Illuminate\Validation\Rule;
  */
 class channel extends Model
 {
-
     const TYPE_RSS = 'rss';
     const TYPE_TWITTER = 'twitter';
 
-    protected $restriction = [
-        user::ROLE_USER
-    ];
+//    protected $restriction = [
+//        user::ROLE_USER
+//    ];
 
     protected $dates = [
         'deleted_at',

@@ -18,5 +18,11 @@ return [
 
     'register' => [
         'have_membership' => 'I already have a membership!',
+    ],
+
+    'dashboard' => [
+        'name' => 'Dashboard',
+        'breadcrumbsName' => 'Dashboard',
+        'breadcrumbsNameMin' => 'your channels',
     ]
 ];
