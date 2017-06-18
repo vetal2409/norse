@@ -17,10 +17,9 @@
         <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.update'|trans }}</button>
     </form>
 
-    <form method="post" action="{{ url(modelName ~ ".delete", {'id': data.model._id}) }}">
-        <input type="hidden" id="_method" name="_method" value="DELETE"/>
-        <button class="btn btn-block btn-danger" type="submit">{{ 'crud.base.delete'|trans }}</button>
-    </form>
+    <td>
+        <button data-url="{{ url(modelName ~ ".delete", {'id': data.model._id}) }}" class="btn btn-block btn-danger remove" type="submit">{{ 'crud.base.delete'|trans }}</button>
+    </td>
 
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -54,5 +53,9 @@
             <!-- /.box-body -->
         </div>
     </div>
+
+    <!-- modal -->
+    {% include 'general/_modal.html.twig' with {'url': data} %}
+    <!-- ./ modal -->
 
 {% endblock %}

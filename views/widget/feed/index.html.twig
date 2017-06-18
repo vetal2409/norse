@@ -69,11 +69,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{ url(modelName ~ ".delete", {'id': item._id}) }}">
-                                            <input type="hidden" id="_method" name="_method" value="DELETE"/>
-                                            <button class="btn btn-block btn-danger"
-                                                    type="submit">{{ 'crud.base.delete'|trans }}</button>
-                                        </form>
+                                        <button data-url="{{ url(modelName ~ ".delete", {'id': item._id}) }}" class="btn btn-block btn-danger remove" type="submit">{{ 'crud.base.delete'|trans }}</button>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -126,6 +122,10 @@
             </div>
         </div>
     </div>
+
+    <!-- modal -->
+    {% include 'general/_modal.html.twig' with {'url': data} %}
+    <!-- ./ modal -->
 
     <script src="{{ asset('js/list.js', 'asset') }}" type="text/javascript"></script>
 

@@ -133,11 +133,14 @@ $app->register(new \e1\services\entity\channel());
 
 # API V1
 $app->mount('{_locale}/v1/auth', new \e1\api\v1\controllers\auth('api.security.authorization_checker'));
+$app->mount('{_locale}/v1/feed', new \e1\api\v1\controllers\feed('api.security.authorization_checker'));
+$app->mount('{_locale}/v1/user', new \e1\api\v1\controllers\user('api.security.authorization_checker'));
+$app->mount('{_locale}/v1/channel', new \e1\api\v1\controllers\channel('api.security.authorization_checker'));
 
 # SITE
 $app->mount('{_locale}/', new \e1\site\controllers\auth('layout/auth', 'site.dashboard', 'auth.login', 'session.security.authorization_checker'));
 $app->mount('{_locale}/', (new \e1\site\controllers\site('layout/main', 'session.security.authorization_checker'))->secure(['*']));
-$app->mount('{_locale}/user', (new \e1\site\controllers\user('layout/main', 'session.security.authorization_checker'))->secure(['*']));
+$app->mount('{_locale}/user', (new \e1\site\controllers\user('layout/main', 'session.security.authorization_checker'))->secure([\e1\models\user::ROLE_ADMIN]));
 $app->mount('{_locale}/feed', (new \e1\site\controllers\feed('layout/main', 'session.security.authorization_checker'))->secure([\e1\models\user::ROLE_ADMIN]));
 $app->mount('{_locale}/channel', (new \e1\site\controllers\channel('layout/main', 'session.security.authorization_checker'))->secure(['*']));
 

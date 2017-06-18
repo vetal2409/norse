@@ -18,6 +18,7 @@ return [
 
     'register' => [
         'have_membership' => 'I already have a membership!',
+        'title' => 'Register a new membership',
     ],
 
     'dashboard' => [
