@@ -153,7 +153,7 @@ class user extends Model implements IdentityInterface
                 $model->setPassword($password);
             }
 
-            if ($model->isScenario([self::SCENARIO_PASSWORD_RESET])) {
+            if ($model->isScenario([self::SCENARIO_PASSWORD_CHANGE])) {
                 $model->generatePasswordResetToken();
             }
 
