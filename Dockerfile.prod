@@ -1,6 +1,6 @@
 FROM vetal2409/nginx-php:latest
 
-COPY docker/images.app/prod/scripts/after/20_fixtures.sh /var/scripts/after/
+COPY docker/images/app/prod/scripts/after/20_fixtures.sh /var/scripts/after/
 
 COPY . /var/www/norse
 WORKDIR /var/www/norse
